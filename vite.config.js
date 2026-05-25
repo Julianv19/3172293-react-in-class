@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { fileURLTopath } from 'url'
+import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 
 //Crear __dirname compatible con ES Modules
-const __filename = fileURLTopath(import.meta.url)
+const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 //https://vite.dev/config/
