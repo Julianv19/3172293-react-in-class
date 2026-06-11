@@ -1,16 +1,27 @@
+import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import authBg from "@/assets/images/bg-1.png";
 import {Input}from "@/shared";
 import Button from "../components/Button";
-import DeleteCounter from "../components/DeleteCounter";
+// import DeleteCounter from "../components/DeleteCounter";
 import DeleteCounter2 from "../components/DeleteCounter2";
+// import EffectDemo from "../components/EffectDemo";
+// import CounterEffect from "../components/CounterEffect";
+import { getDocumentTypes } from "../../services/selectService";
+import { Select,Checkbox } from "@/shared";
 
 
 export default function AuthLayout(){
+    // Estado para los tipos de documentos
+    const [documentTypes, setDocumentTypes]= useState([])
+    // Uso del estado use Effect
+    useEffect(()=>{
+        getDocumentTypes().then(setDocumentTypes);
+    },[])
     return(
-        <>
+        
         <div
-          className= "min-h-screen w-full"
+          className= "min-h-screen w-full mx-auto"
           style ={{
             backgroundImage: `url(${authBg})`,
             backgroundSize : "cover",
@@ -55,6 +66,14 @@ export default function AuthLayout(){
             htmlFor="user-document-number"
             />
 
+            <Select
+                label="Tipos de documentos"
+                name="userDocumentTypes"
+                htmlFor ="userDocumentTypes"
+                options={documentTypes}
+            />            
+            
+
             {/* Actions */}
 
             <div className="flex gap-6 items-center">
@@ -79,9 +98,16 @@ export default function AuthLayout(){
                 <h1>Ejemplo useState</h1>
                 <DeleteCounter2></DeleteCounter2>
             </div>
+            {/* Impplementacion de UseEffect */}
+            {/* <div>
+                <h1>Este es mi useEffect</h1>
+                <EffectDemo></EffectDemo>
+            </div> */}
+            {/* <CounterEffect/> */}
+            
             <Outlet/>
-        </main>,    
+        </main>    
      </div>
- </>
+ 
     );
 }
