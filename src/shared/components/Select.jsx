@@ -1,55 +1,58 @@
 // Componente Select
 
 export default function Select({
-     label,
-     htmlFor,
-     name,
-     options =[]
-}
-){ 
-   
-    return(
+    label,
+    error,
+    htmlFor,
+    name,
+    onChange,
+    value,
+    options = [],
+}){
+    return (
         <div>
-            {/* Label solo se muestra si es truthy en uno logico */}
+            {/* Label solo se muestra si es Truthy un uno logico */}
             {label &&(
-                <label
-                    htmlFor={htmlFor}
-                    className="
-                        block 
-                        text-caption
-                        text-secundary"
-                >
-                
-                {label}
-                </label>
-
-            )}
-
-            {/* Select */}
-            <select
-                name ={name}
-                id ={htmlFor}
+                <label 
+                htmlFor={htmlFor}
                 className="
-                    w80
+                    block
+                    text-caption
+                    text-secondary
+                "
+            >
+                {label}
+            </label>
+            )}
+            {/* Select */}
+            <select 
+                name={name} 
+                onChange={onChange}
+                value={value}
+                id="htmlFor"
+                className="
+                    w-80
                     h12
                     rounded-md
                     border
-                    border-border
                     px-4
+
                     hover:border
                     hover:border-2
-                    hover:border-focus-border"
+                    hover:border-focus-border
+                "
             >
-
                 <option value="">Seleccione una opción</option>
 
-                   {options.map((opt) =>(
+                {options.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                         {opt.label}
                     </option>
-                    ))}
+                ))}
             </select>
+            {error && (
+                <p className="text-caption text-red-800 place-self-start mt-1">{error}</p>
+            )}
         </div>
     )
-
 }

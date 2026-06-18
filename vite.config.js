@@ -15,7 +15,7 @@ export default defineConfig({
     tailwindcss()
   ],resolve:{
     alias:{
-      "@": resolve(__dirname, 'src'),//cuando veas @ interpretalo como / src
+      "@": resolve(__dirname, 'src'),//cuando veas @ interpretalo como /src
     },
   },
 })

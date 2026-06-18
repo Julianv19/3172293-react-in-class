@@ -1,4 +1,5 @@
-// Componente Buttonñ
+// Componente Button
+
 export default function Button ({
     variant = "primary",
     size = "md",
@@ -7,28 +8,22 @@ export default function Button ({
     ...props
 }){
 
-    const variants ={
-        primary: "bg-brand text-text-inverse hover: bg-brand-hover",
-        secondary: "bg-gray-300 text-text-primary hover: bg-brand-soft-hover",
-
+    const variants = {
+        primary: "bg-brand text-text-primary hover:bg-brand-hover",
+        secondary: "bg-brand-soft text-primary hover:bg-brand-soft-hover"
     };
 
-    const sizes ={
+    const sizes = {
         sm: `
-            h-8
-            px-4
+            h-8 
+            px-4 
             before:absolute before:content-['']
-            before:-inset-y-[7px] before:-inset-x-[0px]
-        `,
-        md: `
-            h-10
-            px-4
-            before:absolute before:content-['']
-            before:-inset-y-[4px] before:-inset-x-[0px]
-
-
-        `,
-    }
+            before:-inset-y-[8px] before:-inset-x-[0px]
+            
+            `,
+        md: `h-10 px-4 before:absolute before:content-['']
+            before:-inset-y-[4px] before:-inset-x-[0px]`
+    };
     return(
         <button
             type={type}
@@ -39,13 +34,11 @@ export default function Button ({
                 transition-colors
                 ${variants[variant]}
                 ${sizes[size]}
-
                 `}
                 {...props}
         >
             {children}
 
         </button>
-
     )
 }

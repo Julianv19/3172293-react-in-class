@@ -1,62 +1,58 @@
 export default function Input({
     label,
+    error,
     htmlFor,
     type = "text",
     variant = "primary",
-    size = "sm",
+    size = "small",
     ...props
 }){
-    const variants ={
-        primary:`
-            border-black-950
-            bg-yellow-250
-        
+    const variants = {
+        // Estos valores deben ser con variables
+        primary: `
+            border-brand
+            bg-background
         `,
-        secundary:`
+        secondary: `
             border-red-950
             bg-gray-300
         `,
-        tertiary:`
-            border-blue-950
+        tertiary: `
+            border-green-950        
         `
     };
-    const sizes ={
-        sm:`
+    const sizes = {
+        sm: `
             h-8
-            
-        
         `,
-        md:`
+        md: `
             h-10
-            
         `,
-        lg:`
-            h-12
-            
+        lg: `
+            h-12    
         `
-    };
-
-
+    }
 
     return(
         <div className="w-80">
 
             {/*Label*/}
             <label 
-            //htmlFor con kebab-case
+                // htmlFor con kebab-case
                 htmlFor={htmlFor}
                 className={`
                     block
                     text-caption
                     text-secondary
-                ${
-                    size === "sm"
-                    ? "-mb-2"
-                    : size === "md"
-                    ? "mb-0"
-                    :"mb-1"
-                }
-            `}
+                    ${
+                        size === "sm"
+                        ? "-mb-2"
+                        : size === "md"
+                            ? "mb-0"
+                            : "mb-1"
+                    }
+                    ${error ? "text-red-800" :"text-caption"}
+                `}
                 >
                 {label}
 
@@ -93,10 +89,16 @@ export default function Input({
             <input
                 id={htmlFor}
                 type={type}
+                error={error}
                 className={`
                     relative
                     w-full
                     rounded-md
+                    border-border
+                    px-4
+                    text-bodyrelative
+                    w-full
+                    round-md
                     border
                     px-4
                     text-body
@@ -107,17 +109,16 @@ export default function Input({
                     focus:ring-brand
                     ${variants[variant]}
                     ${sizes[size]}
-
-                   
+                    ${error ? "border-red-800" : "border border-border"}
                 `}
-                {...props}
+            {...props}
             />
 
             </div>
-
-
-
-
+            {/* Feedback */}
+            {error && (
+                <p className="text-caption text-red-800 place-self-start">{error}</p>
+            )}
 
         </div>
     )

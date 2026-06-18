@@ -11,14 +11,17 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "@tailwindcss/vite": "^4.2.4",
+    "clsx": "^2.1.1",
+    "lucide": "^1.21.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-router-dom": "^7.15.1",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.2.4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "^4.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
